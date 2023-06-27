@@ -1,24 +1,26 @@
-Feature: Configuração de Produto
+#language: pt
 
-    Background:
-        Given que eu esteja na página de um produto da loja EBAC-SHOP
+Funcionalidade: Configuração de Produto
 
-    Scenario: Configuração não selecionada
-        When eu deixar de selecionar uma das três configurações obrigatórias
-        And clicar em comprar
-        Then deve ser exibido uma mensagem avisando o cliente "complete o campo que falta"
+    Contexto:
+        Dado que eu esteja na página de um produto da loja EBAC-SHOP
 
-    Scenario: Acima da quantidade
-        When na configuração de produto eu selecionar uma quantidade acima de 10
-        And clicar em comprar
-        Then deve ser exibido uma mensagem avisando o cliente "a quantidade máxima permitida é 10"
+    Cenário: Configuração não selecionada
+        Quando eu deixar de selecionar uma das três configurações obrigatórias
+        E clicar em comprar
+        Então deve ser exibido uma mensagem avisando o cliente "complete o campo que falta"
 
-    Scenario: Limpando Configurações
-        When eu preencher as configurações
-        And clicar em limpar
-        Then as configurações do produto devem voltar ao estado original
+    Cenário: Acima da quantidade
+        Quando na configuração de produto eu selecionar uma quantidade acima de 10
+        E clicar em comprar
+        Então deve ser exibido uma mensagem avisando o cliente "a quantidade máxima permitida é 10"
 
-    Scenario: Compra bem sucedida
-        When eu selecionar todas as configurações do meu produto
-        And clicar em comprar
-        Then o produto deve ser encaminhado para o carrinho
+    Cenário: Limpando Configurações
+        Quando eu preencher as configurações
+        E clicar em limpar
+        Então as configurações do produto devem voltar ao estado original
+
+    Cenário: Compra bem sucedida
+        Quando eu selecionar todas as configurações do meu produto
+        E clicar em comprar
+        Então o produto deve ser encaminhado para o carrinho

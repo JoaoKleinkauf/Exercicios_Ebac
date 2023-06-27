@@ -1,26 +1,21 @@
-Feature: Checkout de produtos
+#language: pt
 
-    Background:
-        Given que eu acesse a página de checkout da EBAC-SHOP
+Funcionalidade: Checkout de produtos
 
-    Scenario: Campos obrigatorios
-        When eu deixar algum campo do cadastro que seja obrigatorio em branco
-        And e clicar em finalizar
-        Then deve exibir um alerta "Campo obrigatorio não preenchido!"
+    Contexto:
+        Dado que eu acesse a página de checkout da EBAC-SHOP
 
-    Scenario: Email invalido
-        When eu digitar o email "joao#gmail.com" no campo email
-        And e clicar em finalizar
-        Then deve exibir um alerta "Erro: Email Invalido!"
+    Cenário: Campos obrigatorios
+        Quando eu deixar algum campo do cadastro que seja obrigatorio em branco
+        E e clicar em finalizar
+        Então deve exibir um alerta "Campo obrigatorio não preenchido!"
 
-    Scenario Outline: Validar emails
-        When eu digitar um email <email> no campo email
-        And e clicar em finalizar
-        Then deve exibir um alerta "Erro: Email Invalido!"
+    Cenário: Email invalido
+        Quando eu digitar o email "joao#gmail.com" no campo email
+        E e clicar em finalizar
+        Então deve exibir um alerta "Erro: Email Invalido!"
 
-        Examples:
-            | email          |
-            | joao#gmail.com |
-            | joao@gmal.com  |
-            | joao@gm4il.com |
-            | joao@jmail.com |
+    Cenário: Campo Vazio
+        Quando no decorrer do cadastro se eu deixar um campo em braco
+        E for para o próximo
+        Então deve ser exibido um alerta de "Campo Vazio!"
